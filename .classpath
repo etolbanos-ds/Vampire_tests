@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Users/Eduardo/Downloads/ExternalJars/jsch-0.1.51.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eduardo/Downloads/ExternalJars/selenium-server-standalone-2.39.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eduardo/Downloads/ExternalJars/EclipseJars/saxon-8.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eduardo/Downloads/ExternalJars/EclipseJars/SaxonLiaison.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eduardo/Downloads/ExternalJars/EclipseJars/testng-6.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eduardo/Downloads/ExternalJars/mysql-connector-java-5.1.22/mysql-connector-java-5.1.22-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eduardo/Downloads/ExternalJars/selenium-2.39.0/selenium-java-2.39.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eduardo/Downloads/ExternalJars/selenium-2.39.0/selenium-java-2.39.0-srcs.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

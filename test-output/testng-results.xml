@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="16338" started-at="2014-06-27T19:28:41Z" finished-at="2014-06-27T19:28:57Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="16338" started-at="2014-06-27T19:28:41Z" finished-at="2014-06-27T19:28:57Z">
+      <class name="demo.DB_demo">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:demo.DB_demo@132ece7]" name="setUp" is-config="true" duration-ms="7" started-at="2014-06-27T16:28:41Z" finished-at="2014-06-27T16:28:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="QueryDB()[pri:0, instance:demo.DB_demo@132ece7]" name="QueryDB" duration-ms="11417" started-at="2014-06-27T16:28:41Z" finished-at="2014-06-27T16:28:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QueryDB -->
+        <test-method status="PASS" signature="remote()[pri:0, instance:demo.DB_demo@132ece7]" name="remote" duration-ms="744" started-at="2014-06-27T16:28:52Z" finished-at="2014-06-27T16:28:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- remote -->
+        <test-method status="PASS" signature="QueryUpdateDB()[pri:0, instance:demo.DB_demo@132ece7]" name="QueryUpdateDB" duration-ms="4152" started-at="2014-06-27T16:28:53Z" finished-at="2014-06-27T16:28:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QueryUpdateDB -->
+      </class> <!-- demo.DB_demo -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
