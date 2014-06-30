@@ -39,7 +39,7 @@ public class DB_demo extends SeleneseTestBase
 	String updated = "";
 //	String refID = "5223244ccce91f4c67e4052e5eade47d000d8ea2" ;
 	static int firstRun = 0;
-	int videoId = 57525;
+	//int videoId = 57525;
 	//int videoId = 147116; // Video ID from file tlc-manifest_orig.xml
 	 
 	static Session session;
