@@ -20,7 +20,7 @@ import java.util.Date;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
+import org.testng.annotations.DataProvider;
 import com.mysql.jdbc.Statement;
 import com.thoughtworks.selenium.SeleneseTestBase;
 
@@ -37,13 +37,28 @@ public class DB_demo extends SeleneseTestBase
 {	
 	String original = "";
 	String updated = "";
-	String refID = "5223244ccce91f4c67e4052e5eade47d000d8ea2" ;
+//	String refID = "5223244ccce91f4c67e4052e5eade47d000d8ea2" ;
+	static int firstRun = 0;
 	int videoId = 57525;
 	//int videoId = 147116; // Video ID from file tlc-manifest_orig.xml
 	 
 	static Session session;
 	
-	 String url ="";
+	@DataProvider(name = "myTest")
+	  public Object[][] createData1() 
+	{
+		return new Object[][] 
+	    {
+				{ "0013919ef52698a75bd4e729bf14212c6d4401fb"},
+	            { "29ac18610198a1062ed06baf5cc7a103eeffabcf"},
+	            { "d1e6e7c4862267937f11e78be32870d5cfcf7714"},
+	            { "0011a601480fbb078cefcf146ef74cb9eaed655b"},
+	            { "10878182"},
+	            { "08ab6615df962a7236cdde1c5698e2319a9f1f44"},
+	             
+	    };
+	}
+	
      @BeforeTest
 
      public void setUp() throws Exception
@@ -70,6 +85,7 @@ public class DB_demo extends SeleneseTestBase
              System.out.println("Establishing Connection...");
              session.connect();
              int assinged_port=session.setPortForwardingL(lport, rhost, rport);
+             firstRun=1;
              System.out.println("localhost:"+assinged_port+" -> "+rhost+":"+rport);
          }
          catch(Exception e)
@@ -78,17 +94,8 @@ public class DB_demo extends SeleneseTestBase
          }
      }
      
-     public void RestoreDB() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException
+     public void RestoreDB(String refID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException
      {
-    	/* try
-    	 {
-             go();
-         } 
-    	 catch(Exception ex)
-    	 {
-             ex.printStackTrace();
-         }
-    	 */
     	 //Prepare connection
        	 String url1 ="jdbc:mysql://localhost:3306/devcontent";
          
@@ -100,8 +107,8 @@ public class DB_demo extends SeleneseTestBase
            
          Connection con = DriverManager.getConnection(url1, "root","");
            
-           //Create Update Statement
-           PreparedStatement stmt = con.prepareStatement("UPDATE `dws_video` SET `description`= ? WHERE `reference_id`= ?");
+         //Create Update Statement
+         PreparedStatement stmt = con.prepareStatement("UPDATE `dws_video` SET `description`= ? WHERE `reference_id`= ?");
     
            // Set original description and reference ID for the DB Update to restore the DB to it's original state
            stmt.setString(1, original);
@@ -115,23 +122,25 @@ public class DB_demo extends SeleneseTestBase
      }
      
      
-     @Test(priority=1)
+   //  @Test(priority=1)
      
-     public void QueryDB() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException
+     public void QueryDB(String refID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException
      {
     	 // Query: SELECT * FROM `dws_video` WHERE `network_id`='tlc' AND `mp4_path`='/digmed/hdnet/e9/23/13740901401197_SS303_AnatomyPain'
     	    //SELECT * FROM devcontent.dws_video where reference_id = 'ffff18610198a1062ed06baf5cc7a103eeffabcf';
     	// refid="004d23ad9b04f7c9c6f9147c5c44fde5025ef371"	
     	 
-    	 try
+    	 if (firstRun==0)
     	 {
-             go();
-         } 
-    	 catch(Exception ex)
-    	 {
-             ex.printStackTrace();
-         }
-    	 
+    		 try
+    	   	 {
+    			 go();
+    	   	 } 
+    		 catch(Exception ex)
+    		 {
+    			 ex.printStackTrace();
+    		 }
+    	 } 
     	 //Prepare connection
        	 String url1 ="jdbc:mysql://localhost:3306/devcontent";
          
@@ -157,11 +166,10 @@ public class DB_demo extends SeleneseTestBase
            System.out.println(original);
            //stmt.close();
            System.out.println();
-            
      }
      
      
- 	@Test(priority=2) 
+ 	//@Test(priority=2) 
     public void remote() 
  	{
  		//Session session = null;
@@ -174,9 +182,7 @@ public class DB_demo extends SeleneseTestBase
   
  		try 
  		{
- 	//		go();
-  		
- 			// exec 'scp -f rfile' remotely
+  			// exec 'scp -f rfile' remotely
  			channel = session.openChannel("exec");
  			((ChannelExec)channel).setCommand(command);
  			channel.connect();
@@ -210,8 +216,8 @@ public class DB_demo extends SeleneseTestBase
  	} 
     
      
-     @Test(priority=3)
-     public void QueryUpdateDB() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException
+    // @Test(priority=3)
+     public void QueryUpdateDB(String refID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException
      {
        	 //Prepare connection
        	 String url1 ="jdbc:mysql://localhost:3306/devcontent";
@@ -234,8 +240,7 @@ public class DB_demo extends SeleneseTestBase
            ResultSet result = (ResultSet) stmt.executeQuery();
            
         //   stmt.close();
-            
-           
+  
            System.out.println();
         	   //Retrieve by column name
            while(result.next())
@@ -249,10 +254,18 @@ public class DB_demo extends SeleneseTestBase
         	   else
         	   {
         		   System.out.println("Vampire description update successful.");
-        		   RestoreDB();
+        		   RestoreDB(refID);
         	   }
        		System.out.println();
-      
      }
- 
+
+     
+     @Test(dataProvider = "myTest")
+     public void Test(String refID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException
+     {
+    	 QueryDB(refID);
+    	 remote();
+    	 QueryUpdateDB(refID);
+     }
+
 }

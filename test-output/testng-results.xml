@@ -1,28 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" total="6" passed="6">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="16338" started-at="2014-06-27T19:28:41Z" finished-at="2014-06-27T19:28:57Z">
+  <suite name="Default suite" duration-ms="31955" started-at="2014-06-30T19:20:17Z" finished-at="2014-06-30T19:20:49Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="16338" started-at="2014-06-27T19:28:41Z" finished-at="2014-06-27T19:28:57Z">
+    <test name="Default test" duration-ms="31955" started-at="2014-06-30T19:20:17Z" finished-at="2014-06-30T19:20:49Z">
       <class name="demo.DB_demo">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:demo.DB_demo@132ece7]" name="setUp" is-config="true" duration-ms="7" started-at="2014-06-27T16:28:41Z" finished-at="2014-06-27T16:28:41Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:demo.DB_demo@89848d]" name="setUp" is-config="true" duration-ms="6" started-at="2014-06-30T16:20:17Z" finished-at="2014-06-30T16:20:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="QueryDB()[pri:0, instance:demo.DB_demo@132ece7]" name="QueryDB" duration-ms="11417" started-at="2014-06-27T16:28:41Z" finished-at="2014-06-27T16:28:52Z">
+        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@89848d]" name="Test" duration-ms="11260" started-at="2014-06-30T16:20:17Z" data-provider="myTest" finished-at="2014-06-30T16:20:28Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[0013919ef52698a75bd4e729bf14212c6d4401fb]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- QueryDB -->
-        <test-method status="PASS" signature="remote()[pri:0, instance:demo.DB_demo@132ece7]" name="remote" duration-ms="744" started-at="2014-06-27T16:28:52Z" finished-at="2014-06-27T16:28:53Z">
+        </test-method> <!-- Test -->
+        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@89848d]" name="Test" duration-ms="4381" started-at="2014-06-30T16:20:28Z" data-provider="myTest" finished-at="2014-06-30T16:20:32Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[29ac18610198a1062ed06baf5cc7a103eeffabcf]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- remote -->
-        <test-method status="PASS" signature="QueryUpdateDB()[pri:0, instance:demo.DB_demo@132ece7]" name="QueryUpdateDB" duration-ms="4152" started-at="2014-06-27T16:28:53Z" finished-at="2014-06-27T16:28:57Z">
+        </test-method> <!-- Test -->
+        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@89848d]" name="Test" duration-ms="4045" started-at="2014-06-30T16:20:32Z" data-provider="myTest" finished-at="2014-06-30T16:20:36Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[d1e6e7c4862267937f11e78be32870d5cfcf7714]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- QueryUpdateDB -->
+        </test-method> <!-- Test -->
+        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@89848d]" name="Test" duration-ms="4057" started-at="2014-06-30T16:20:36Z" data-provider="myTest" finished-at="2014-06-30T16:20:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[0011a601480fbb078cefcf146ef74cb9eaed655b]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test -->
+        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@89848d]" name="Test" duration-ms="4024" started-at="2014-06-30T16:20:40Z" data-provider="myTest" finished-at="2014-06-30T16:20:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[10878182]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test -->
+        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@89848d]" name="Test" duration-ms="4156" started-at="2014-06-30T16:20:44Z" data-provider="myTest" finished-at="2014-06-30T16:20:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[08ab6615df962a7236cdde1c5698e2319a9f1f44]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test -->
       </class> <!-- demo.DB_demo -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
