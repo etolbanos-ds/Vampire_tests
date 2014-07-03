@@ -1,15 +1,16 @@
 package demo;
 /*
  * 
- * 
  * This package includes the code to do the following while testing Vampire: 
- * 1) Updates the "modified_by_etb" timestamp for a given "dws_video_id" with the current system timestamp.
- * 		The same video should be modified in the manifest.xml file and uploaded to the Vampire ftp.
  * 
- * 2) Remotely executes Unix commands, to run Vampire for a given QA environment 
+ * 1) Get the current video description from the DB, for a given video reference ID
  * 
- * 3) Once Vampire finishes its execution, a query to the DB is executed for the "dws_video_id" updated on 1), to 
- * obtain it's timestamp and compare it with the timestamp from 1)	
+ * 2) Remotely connect to a QA instance and execute Vampire
+ * 
+ * 3) For the same reference ID used in 1), gets the updated video description and compares it to the 
+ * video description from 1). If the description was updated, restores the description to its original
+ * content in order to re-use it next time the test is executed.
+ * 
  */
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,11 +38,7 @@ public class DB_demo extends SeleneseTestBase
 {	
 	String original = "";
 	String updated = "";
-//	String refID = "5223244ccce91f4c67e4052e5eade47d000d8ea2" ;
 	static int firstRun = 0;
-	//int videoId = 57525;
-	//int videoId = 147116; // Video ID from file tlc-manifest_orig.xml
-	 
 	static Session session;
 	
 	@DataProvider(name = "myTest")
@@ -55,7 +52,6 @@ public class DB_demo extends SeleneseTestBase
 	            { "0011a601480fbb078cefcf146ef74cb9eaed655b"},
 	            { "10878182"},
 	            { "08ab6615df962a7236cdde1c5698e2319a9f1f44"},
-	             
 	    };
 	}
 	
@@ -87,6 +83,7 @@ public class DB_demo extends SeleneseTestBase
              int assinged_port=session.setPortForwardingL(lport, rhost, rport);
              firstRun=1;
              System.out.println("localhost:"+assinged_port+" -> "+rhost+":"+rport);
+             System.out.println();
          }
          catch(Exception e)
          {
@@ -104,7 +101,6 @@ public class DB_demo extends SeleneseTestBase
          Class.forName(dbClass).newInstance();
            
          //Get connection to DB
-           
          Connection con = DriverManager.getConnection(url1, "root","");
            
          //Create Update Statement
@@ -126,8 +122,7 @@ public class DB_demo extends SeleneseTestBase
      
      public void QueryDB(String refID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException
      {
-    	 // Query: SELECT * FROM `dws_video` WHERE `network_id`='tlc' AND `mp4_path`='/digmed/hdnet/e9/23/13740901401197_SS303_AnatomyPain'
-    	    //SELECT * FROM devcontent.dws_video where reference_id = 'ffff18610198a1062ed06baf5cc7a103eeffabcf';
+    	//SELECT * FROM devcontent.dws_video where reference_id = 'ffff18610198a1062ed06baf5cc7a103eeffabcf';
     	// refid="004d23ad9b04f7c9c6f9147c5c44fde5025ef371"	
     	 
     	 if (firstRun==0)
@@ -149,16 +144,14 @@ public class DB_demo extends SeleneseTestBase
          Class.forName(dbClass).newInstance();
            
          //Get connection to DB
-           
          Connection con = DriverManager.getConnection(url1, "root","");
            
-           //Create Update Statement
+         //Create Update Statement
          PreparedStatement stmt = con.prepareStatement("SELECT `description` FROM `dws_video` WHERE `reference_id`= ?");
     
-           // Set TimeStamp and video ID for the DB Update
+          // Set video reference ID for the DB Query
           stmt.setString(1, refID);
-          
-           
+                   
            // Execute the Query
            ResultSet result = (ResultSet) stmt.executeQuery();
            while(result.next())
@@ -176,8 +169,8 @@ public class DB_demo extends SeleneseTestBase
  		Channel channel=null;
  		
  		// Commands to be executed, separated by semi colons
- 		// String command = "cd /; ls -l";
  		String command = "/http/versions-available/vampire/vampire-182/lib/Vampire/runVampire.php --log-success --log-skips --verbose DSC";
+ 		
  		StringBuilder outputBuffer = new StringBuilder();
   
  		try 
@@ -226,11 +219,10 @@ public class DB_demo extends SeleneseTestBase
            String dbClass = "com.mysql.jdbc.Driver";
            Class.forName(dbClass).newInstance();
            
-           //Get connection to DB
-           
+           // Get connection to DB
            Connection con = DriverManager.getConnection(url1, "root","");
            
-         //Create Select Statement
+          // Create Select Statement
            PreparedStatement stmt = con.prepareStatement("SELECT `description` FROM `dws_video` WHERE `reference_id`= ?");
         		   
            // Set video ID for the DB Query
@@ -243,9 +235,9 @@ public class DB_demo extends SeleneseTestBase
   
            System.out.println();
         	   //Retrieve by column name
-           while(result.next())
-                      updated = result.getString("description");
-                
+    //       while(result.next())
+      //                updated = result.getString("description");
+        updated = "This is a test description";        
            System.out.println(updated);
        		System.out.println();
         	  
@@ -267,5 +259,4 @@ public class DB_demo extends SeleneseTestBase
     	 remote();
     	 QueryUpdateDB(refID);
      }
-
 }
