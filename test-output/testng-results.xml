@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" total="6" passed="6">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="70978" started-at="2014-07-03T16:20:10Z" finished-at="2014-07-03T16:21:21Z">
+  <suite name="Default suite" duration-ms="60909" started-at="2014-07-07T18:48:00Z" finished-at="2014-07-07T18:49:01Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="70978" started-at="2014-07-03T16:20:10Z" finished-at="2014-07-03T16:21:21Z">
+    <test name="Default test" duration-ms="60909" started-at="2014-07-07T18:48:00Z" finished-at="2014-07-07T18:49:01Z">
       <class name="demo.DB_demo">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:demo.DB_demo@89848d]" name="setUp" is-config="true" duration-ms="11" started-at="2014-07-03T13:20:10Z" finished-at="2014-07-03T13:20:10Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:demo.DB_demo@1a4e5c0]" name="setUp" is-config="true" duration-ms="8" started-at="2014-07-07T15:48:00Z" finished-at="2014-07-07T15:48:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@89848d]" name="Test" duration-ms="22993" started-at="2014-07-03T13:20:10Z" data-provider="myTest" finished-at="2014-07-03T13:20:33Z">
+        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@1a4e5c0]" name="Test" duration-ms="21297" started-at="2014-07-07T15:48:01Z" data-provider="myTest" finished-at="2014-07-07T15:48:22Z">
           <params>
             <param index="0">
               <value>
@@ -22,7 +22,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Test -->
-        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@89848d]" name="Test" duration-ms="9509" started-at="2014-07-03T13:20:33Z" data-provider="myTest" finished-at="2014-07-03T13:20:42Z">
+        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@1a4e5c0]" name="Test" duration-ms="7765" started-at="2014-07-07T15:48:22Z" data-provider="myTest" finished-at="2014-07-07T15:48:30Z">
           <params>
             <param index="0">
               <value>
@@ -33,7 +33,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Test -->
-        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@89848d]" name="Test" duration-ms="11917" started-at="2014-07-03T13:20:42Z" data-provider="myTest" finished-at="2014-07-03T13:20:54Z">
+        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@1a4e5c0]" name="Test" duration-ms="7780" started-at="2014-07-07T15:48:30Z" data-provider="myTest" finished-at="2014-07-07T15:48:37Z">
           <params>
             <param index="0">
               <value>
@@ -44,7 +44,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Test -->
-        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@89848d]" name="Test" duration-ms="8610" started-at="2014-07-03T13:20:54Z" data-provider="myTest" finished-at="2014-07-03T13:21:03Z">
+        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@1a4e5c0]" name="Test" duration-ms="7717" started-at="2014-07-07T15:48:37Z" data-provider="myTest" finished-at="2014-07-07T15:48:45Z">
           <params>
             <param index="0">
               <value>
@@ -55,7 +55,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Test -->
-        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@89848d]" name="Test" duration-ms="9622" started-at="2014-07-03T13:21:03Z" data-provider="myTest" finished-at="2014-07-03T13:21:12Z">
+        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@1a4e5c0]" name="Test" duration-ms="7830" started-at="2014-07-07T15:48:45Z" data-provider="myTest" finished-at="2014-07-07T15:48:53Z">
           <params>
             <param index="0">
               <value>
@@ -66,7 +66,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Test -->
-        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@89848d]" name="Test" duration-ms="8289" started-at="2014-07-03T13:21:12Z" data-provider="myTest" finished-at="2014-07-03T13:21:21Z">
+        <test-method status="PASS" signature="Test(java.lang.String)[pri:0, instance:demo.DB_demo@1a4e5c0]" name="Test" duration-ms="8382" started-at="2014-07-07T15:48:53Z" data-provider="myTest" finished-at="2014-07-07T15:49:01Z">
           <params>
             <param index="0">
               <value>

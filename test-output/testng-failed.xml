@@ -6,7 +6,7 @@
       <class name="demo.DB_demo">
         <methods>
           <include name="setUp"/>
-          <include name="Test" invocation-numbers="0 1 2 3 4 5"/>
+          <include name="Test"/>
         </methods>
       </class> <!-- demo.DB_demo -->
     </classes>

@@ -11,7 +11,15 @@ package demo;
  * video description from 1). If the description was updated, restores the description to its original
  * content in order to re-use it next time the test is executed.
  * 
+ * As a POC, this test case used a hardcoded data provider with reference ids present in both the 
+ * available manifest files and the QA environment DB. Currently the hardcoded data provider is 
+ * commented out the code and the code has been updated to use the DiscoveryDataProvider class to read
+ * the reference ids information from an excel file. 
+ * 
  */
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,9 +27,22 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+
+
+
+//import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
+
 import com.mysql.jdbc.Statement;
 import com.thoughtworks.selenium.SeleneseTestBase;
 
@@ -41,7 +62,7 @@ public class DB_demo extends SeleneseTestBase
 	static int firstRun = 0;
 	static Session session;
 	
-	@DataProvider(name = "myTest")
+	/*@DataProvider(name = "myTest")
 	  public Object[][] createData1() 
 	{
 		return new Object[][] 
@@ -53,6 +74,16 @@ public class DB_demo extends SeleneseTestBase
 	            { "10878182"},
 	            { "08ab6615df962a7236cdde1c5698e2319a9f1f44"},
 	    };
+	}*/
+	
+	@DataProvider(name = "myTest")
+	public  Object[][] createData1() throws Exception 
+	{
+        DiscoveryDataProvider dp = new DiscoveryDataProvider();
+     // String path = "MetricsInput" + File.separator +"EventsToValidate.xls";
+        //String path = "C:\\Users\\Eduardo\\workspace-kepler\\BasicDemo\\src\\DP_Vampire.xls";
+        Object[][] retObjArr = dp.ReadDatafrmExcel("ids", "refID", "C:\\Users\\Eduardo\\workspace-kepler\\BasicDemo\\src\\DP_Vampire.xls");
+        return (retObjArr);
 	}
 	
      @BeforeTest
