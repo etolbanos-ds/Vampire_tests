@@ -59,6 +59,7 @@ public class DB_demo extends SeleneseTestBase
 {	
 	String original = "";
 	String updated = "";
+	String network= "";
 	static int firstRun = 0;
 	static Session session;
 	
@@ -194,13 +195,12 @@ public class DB_demo extends SeleneseTestBase
      
      
  	//@Test(priority=2) 
-    public void remote() 
+    public void remote(String network) 
  	{
  		//Session session = null;
  		Channel channel=null;
- 		
  		// Commands to be executed, separated by semi colons
- 		String command = "/http/versions-available/vampire/vampire-182/lib/Vampire/runVampire.php --log-success --log-skips --verbose DSC";
+ 		String command = "/http/versions-available/vampire/vampire-182/lib/Vampire/runVampire.php --log-success --log-skips --verbose "+ network;//DSC";
  		
  		StringBuilder outputBuffer = new StringBuilder();
   
@@ -266,9 +266,9 @@ public class DB_demo extends SeleneseTestBase
   
            System.out.println();
         	   //Retrieve by column name
-    //       while(result.next())
-      //                updated = result.getString("description");
-        updated = "This is a test description";        
+           while(result.next())
+                      updated = result.getString("description");
+      //  updated = "This is a test description";        
            System.out.println(updated);
        		System.out.println();
         	  
@@ -284,10 +284,10 @@ public class DB_demo extends SeleneseTestBase
 
      
      @Test(dataProvider = "myTest")
-     public void Test(String refID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException
+     public void Test(String refID, String network) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException
      {
     	 QueryDB(refID);
-    	 remote();
+    	 remote(network);
     	 QueryUpdateDB(refID);
      }
 }
