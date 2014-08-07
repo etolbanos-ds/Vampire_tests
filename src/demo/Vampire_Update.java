@@ -55,7 +55,7 @@ import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
 
-public class DB_demo extends SeleneseTestBase
+public class Vampire_Update extends SeleneseTestBase
 {	
 	String original = "";
 	String updated = "";
